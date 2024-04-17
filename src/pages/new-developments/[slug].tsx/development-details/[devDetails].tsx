@@ -75,7 +75,7 @@ const DevDetails = (props: IDevDetails) => {
 
   const renderHeroSection = (): JSX.Element => {
     return (
-      <HeroSection heading={title} subHeading={Address} parentDivClass="">
+      <HeroSection heading={title} subHeading={Address} divClass=" lg:w-3/5">
         <div className="flex flex-col mt-8 lg:flex-row justify-start lg:justify-between lg:items-center">
           <div className="flex gap-4">
             <Button buttonClass="font-bold text-white bg-at-primary border-at-primary hover:border-at-primary-700 hover:bg-at-primary-700 active:bg-at-primary-700">
@@ -164,6 +164,14 @@ const DevDetails = (props: IDevDetails) => {
       <main className="p-4 xl:p-0 xl:py-8 max-w-1200 mx-auto font-dmSans">
         <section className="flex flex-col lg:flex-row gap-4 mt-4 lg:mt-8 mb-8">
           {renderHeroSection()}
+          <div className="w-full lg:w-2/5 h-176 lg:h-auto relative ">
+            <Image
+              src="https://d126h31mg8tzcs.cloudfront.net/arbour-park/gallery/image/images-1200x5501__original.jpg"
+              alt="Arbour park"
+              className="rounded-lg"
+              fill
+            />
+          </div>
         </section>
         <section className="w-full lg:w-8/12 ">
           <About

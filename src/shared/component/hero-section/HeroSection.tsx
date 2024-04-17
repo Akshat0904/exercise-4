@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 
 interface IProps {
-  parentDivClass?: string;
+  divClass?: string;
   heading: string;
   subHeading?: string;
   subHeadingClass?: string;
@@ -9,7 +9,7 @@ interface IProps {
 }
 
 const HeroSection: React.FC<IProps> = ({
-  parentDivClass = "",
+  divClass = "",
   heading,
   subHeading,
   subHeadingClass = "",
@@ -19,7 +19,7 @@ const HeroSection: React.FC<IProps> = ({
     <div
       className={
         "p-6 md:px-16 md:py-12 z-0 bg-at-primary-50 text-at-gray-500 rounded-xl w-full md:pr-72 relative " +
-        parentDivClass
+        divClass
       }
     >
       <div>

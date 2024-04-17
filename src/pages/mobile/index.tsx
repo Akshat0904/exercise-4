@@ -7,7 +7,7 @@ const MobilePage = (): JSX.Element => {
   const renderHeroSection = (): JSX.Element => {
     return (
       <HeroSection
-        parentDivClass="mb-16"
+        divClass="mb-16"
         heading="Explore properties wherever and whenever you like."
         subHeading="Available on iOS and Android, the resi.uatz.view.com.au app helps you keep on top of your property search with the latest real estate listings for sale, rent, recently sold, as well as unlisted properties."
         subHeadingClass="lg:text-lg"

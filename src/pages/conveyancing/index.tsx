@@ -12,7 +12,7 @@ const ConveyancingPage = () => {
       <HeroSection
         heading="Buying or selling?"
         subHeading="Redeem your $220 conveyancing voucher and free contract review"
-        parentDivClass="flex flex-col-reverse mb-8 md:block"
+        divClass="flex flex-col-reverse mb-8 md:block"
       >
         <a
           href="/_"
