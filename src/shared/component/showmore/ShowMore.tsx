@@ -1,4 +1,6 @@
 import React, { ReactNode, useState } from "react";
+import Image from "next/image";
+import arrow from "@/public/images/arrow.svg";
 
 interface IProps {
   expandHeight: number;
@@ -51,22 +53,7 @@ const ShowMore: React.FC<IProps> = ({
       >
         {showMore ? collapseText : expandText}
         <span className={(showMore && "rotate-180") || ""}>
-          <svg
-            width="12"
-            height="8"
-            viewBox="0 0 12 8"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M1 1.5L6 6.5L11 1.5"
-              stroke="#0073CF"
-              fill=""
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            ></path>
-          </svg>
+          <Image src={arrow} alt="Mail icon" width={14} height={14} />
         </span>
       </button>
     </div>

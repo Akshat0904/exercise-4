@@ -1,5 +1,6 @@
 import Image from "next/image";
 import RoomDetail from "@/src/shared/component/roomDetails/RoomDetail";
+import location from "@/public/images/location.svg";
 
 interface IProps {
   title: string;
@@ -33,21 +34,7 @@ const About = ({
       <div className="lg:flex border-b border-at-light-500 pb-8">
         <div className="mb-2 lg:border-r lg:border-at-light-500 lg:pr-6">
           <div className="flex gap-2 items-center mb-1">
-            <svg
-              width="16"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M7.49984 15.0003L1.6665 18.3337V5.00033L7.49984 1.66699M7.49984 15.0003L13.3332 18.3337M7.49984 15.0003V1.66699M13.3332 18.3337L18.3332 15.0003V1.66699L13.3332 5.00033M13.3332 18.3337V5.00033M13.3332 5.00033L7.49984 1.66699"
-                stroke="#666666"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              ></path>
-            </svg>
+            <Image src={location} alt="Mail icon" width={18} height={18} />
             <span className="text-sm font-normal text-at-gray-700">
               Display Location
             </span>
@@ -56,21 +43,7 @@ const About = ({
         </div>
         <div className="mb-2 lg:pl-6 lg:border-r lg:border-at-light-500 lg:pr-6">
           <div className="flex gap-2 items-center mb-1">
-            <svg
-              width="16"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M7.49984 15.0003L1.6665 18.3337V5.00033L7.49984 1.66699M7.49984 15.0003L13.3332 18.3337M7.49984 15.0003V1.66699M13.3332 18.3337L18.3332 15.0003V1.66699L13.3332 5.00033M13.3332 18.3337V5.00033M13.3332 5.00033L7.49984 1.66699"
-                stroke="#666666"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              ></path>
-            </svg>
+            <Image src={location} alt="Mail icon" width={18} height={18} />
             <span className="text-sm font-normal text-at-gray-700">
               Property Type
             </span>

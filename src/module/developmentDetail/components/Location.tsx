@@ -2,6 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Button from "@/src/shared/component/button/Button";
 import Modal from "@/src/shared/component/modal/Modal";
+import cross from "@/public/images/cross.svg";
 
 interface IProps {
   title: string;
@@ -57,22 +58,7 @@ const LocationDetails = ({ title, address, displayLocation }: IProps) => {
                     onClick={setModal}
                     className="w-5 h-5 md:w-7 md:h-7 noHoverEffect"
                   >
-                    <svg
-                      width="15"
-                      height="15"
-                      viewBox="0 0 10 10"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M9.16634 0.833984L0.833008 9.16732M0.833008 0.833984L9.16634 9.16732"
-                        stroke="#333333"
-                        fill=""
-                        strokeWidth="0.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      ></path>
-                    </svg>
+                    <Image src={cross} alt="Mail icon" width={18} height={18} />
                   </button>
                 </div>
                 <h3 className="text-center text-grayIcon text-lg font-medium mt-3 mb-2">

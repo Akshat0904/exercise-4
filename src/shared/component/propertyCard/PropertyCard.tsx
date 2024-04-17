@@ -3,9 +3,9 @@ import RoomDetail from "../roomDetails/RoomDetail";
 
 interface IProps {
   url: string;
-  propertyTitle: string;
-  propertyPrice: string;
-  propertyDescription: string;
+  title: string;
+  price: string;
+  description: string;
   bedRooms: string;
   bathRooms: string;
   carSpaces: string;
@@ -13,9 +13,9 @@ interface IProps {
 
 const PropertyCard = ({
   url,
-  propertyTitle,
-  propertyPrice,
-  propertyDescription,
+  title,
+  price,
+  description,
   bedRooms,
   bathRooms,
   carSpaces,
@@ -29,19 +29,15 @@ const PropertyCard = ({
           </div>
         </div>
         <div className="w-full flex flex-col ml-4 justify-between">
-          <p className="text-at-lg font-bold text-at-gray-500">
-            {propertyTitle}
-          </p>
-          <p className="text-base font-normal text-at-gray-700">
-            {propertyPrice}
-          </p>
+          <p className="text-at-lg font-bold text-at-gray-500">{title}</p>
+          <p className="text-base font-normal text-at-gray-700">{price}</p>
           <RoomDetail
             bedroom={bedRooms}
             bathroom={bathRooms}
             parking={carSpaces}
           >
             <p className="text-sm text-at-dark-700 capitalize pl-2 text-at-gray-700">
-              {propertyDescription}
+              {description}
             </p>
           </RoomDetail>
         </div>
