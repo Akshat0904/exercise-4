@@ -4,11 +4,12 @@ import { ReactNode } from "react";
 interface IProps {
   divClass?: string;
   title: string;
-  openIcon: string;
-  closeIcon: string;
+  openIcon?: string;
+  closeIcon?: string;
   openSpanClass?: string;
   closeSpanClass?: string;
   description: string | ReactNode;
+  children?: ReactNode;
 }
 
 const Accordion = ({
@@ -19,6 +20,7 @@ const Accordion = ({
   closeSpanClass,
   openIcon,
   closeIcon,
+  children,
 }: IProps) => {
   const [accordionOpen, setAccordionOpen] = useState(false);
   const toggleAccordian = (): void => {
@@ -37,7 +39,8 @@ const Accordion = ({
             (accordionOpen ? openSpanClass : closeSpanClass)
           }
         >
-          {accordionOpen ? closeIcon : openIcon}
+          {children}
+          {!children && (accordionOpen ? closeIcon : openIcon)}
         </span>
       </button>
       <div

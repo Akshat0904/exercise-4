@@ -12,6 +12,7 @@ import LocationDetails from "@/src/module/developmentDetail/components/Location"
 import Accordion from "@/src/shared/component/accordian/Accordion";
 import mail_open from "@/public/images/mail_open.svg";
 import telephone from "@/public/images/telephone.svg";
+import arrow from "@/public/images/black-arrow.svg";
 
 export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
@@ -128,7 +129,7 @@ const DevDetails = (props: IDevDetails) => {
     );
   };
 
-  const renderAccordian = (): JSX.Element => {
+  const renderInsights = (): JSX.Element => {
     return (
       <div className="border-t mt-4 pt-8 lg:mt-8">
         <div className="flex flex-col ">
@@ -138,21 +139,21 @@ const DevDetails = (props: IDevDetails) => {
           <Accordion
             title="Meet the Neighbors near Surrey hills"
             description="With luxurious 2 and 3 bedroom apartments on offer, the development is a product of years of experience by a team of Australia’s best designers. Architecture and interiors have been championed by Australia’s preeminent firm Elenberg Fraser with lush landscapes by Openwork."
-            openIcon="^"
-            closeIcon="^"
             openSpanClass="rotate-180 text-[16px]"
             closeSpanClass="text-[16px]"
             divClass="px-4"
-          />
+          >
+            <Image src={arrow} alt="arrow" width={14} height={14} />
+          </Accordion>
           <Accordion
             title="Surrey hills Suburb Trends"
             description="Positioned in one of Melbourne’s most established and leafy neighborhoods, Arbour Park introduces elevated modern living to the charming locale of Surrey Hills."
-            openIcon="^"
-            closeIcon="^"
             openSpanClass="rotate-180 text-[16px]"
             closeSpanClass="text-[16px]"
             divClass="px-4"
-          />
+          >
+            <Image src={arrow} alt="arrow" width={14} height={14} />
+          </Accordion>
         </div>
       </div>
     );
@@ -205,7 +206,7 @@ const DevDetails = (props: IDevDetails) => {
           />
         </section>
         <section className="w-full lg:w-8/12 text-at-gray-500">
-          {renderAccordian()}
+          {renderInsights()}
         </section>
       </main>
     </Layout>
