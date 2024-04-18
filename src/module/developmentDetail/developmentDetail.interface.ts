@@ -1,4 +1,4 @@
-interface IAddress {
+export  interface IAddress {
     id: string;
     latitude: string;
     longitude: string;
