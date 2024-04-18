@@ -102,7 +102,6 @@ const ConveyancingPage = () => {
         <Review week={4} name="Jake Curtis">
           <ShowMore
             collapseHeight={75}
-            expandHeight={96}
             expandText="Show More"
             collapseText="Show Less"
           >
@@ -116,7 +115,6 @@ const ConveyancingPage = () => {
         <Review week={2} name="Brendan Freeman">
           <ShowMore
             collapseHeight={75}
-            expandHeight={360}
             expandText="Show More"
             collapseText="Show Less"
           >
@@ -136,7 +134,6 @@ const ConveyancingPage = () => {
         <Review week={2} name="Emma Gerts">
           <ShowMore
             collapseHeight={75}
-            expandHeight={360}
             expandText="Show More"
             collapseText="Show Less"
           >

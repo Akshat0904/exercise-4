@@ -92,13 +92,12 @@ const Faq = (): JSX.Element => {
       <div className="lg:w-3/5">
         {FAQ_DETAILS.map((faqDetail, index) => (
           <Accordion
-            divClass={index == 4 ? "pb-4 mb-4 border-none" : ""}
+            className={index == 4 ? "pb-4 mb-4 border-none" : ""}
             key={faqDetail.title}
             title={faqDetail.title}
-            description={faqDetail.description}
-            openIcon="+"
-            closeIcon="-"
-          />
+          >
+            {faqDetail.description}
+          </Accordion>
         ))}
       </div>
     </>

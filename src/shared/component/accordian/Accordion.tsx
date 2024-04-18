@@ -2,45 +2,25 @@ import { useState } from "react";
 import { ReactNode } from "react";
 
 interface IProps {
-  divClass?: string;
+  className?: string;
   title: string;
-  openIcon?: string;
-  closeIcon?: string;
-  openSpanClass?: string;
-  closeSpanClass?: string;
-  description: string | ReactNode;
   children?: ReactNode;
 }
 
-const Accordion = ({
-  title,
-  description,
-  divClass,
-  openSpanClass,
-  closeSpanClass,
-  openIcon,
-  closeIcon,
-  children,
-}: IProps) => {
+const Accordion = ({ title, className, children }: IProps) => {
   const [accordionOpen, setAccordionOpen] = useState(false);
   const toggleAccordian = (): void => {
     setAccordionOpen((prev) => !prev);
   };
   return (
-    <div className={"border-b font-dmSans text-at-gray-500 " + divClass}>
+    <div className={"border-b font-dmSans text-at-gray-500 " + className}>
       <button
         onClick={toggleAccordian}
         className="flex items-center justify-between w-full cursor-pointer py-3.5"
       >
         <p className="text-base text-left font-bold pr-2">{title}</p>
-        <span
-          className={
-            "text-xl font-medium pb-1 " +
-            (accordionOpen ? openSpanClass : closeSpanClass)
-          }
-        >
-          {children}
-          {!children && (accordionOpen ? closeIcon : openIcon)}
+        <span className="text-xl font-medium pb-1 ">
+          {accordionOpen ? "-" : "+"}
         </span>
       </button>
       <div
@@ -50,7 +30,7 @@ const Accordion = ({
             : "grid-rows-[0fr] opacity-0"
         }`}
       >
-        <div className="overflow-hidden text-sm font-normal">{description}</div>
+        <div className="overflow-hidden text-sm font-normal">{children}</div>
       </div>
     </div>
   );
