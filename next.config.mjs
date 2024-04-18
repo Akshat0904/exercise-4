@@ -17,21 +17,21 @@ const nextConfig = {
   },
   redirects: async () => {
     return [
-      {
-        source: "/new-developments",
-        destination: "/conveyancing",
-        permanent: true,
-      },
-      {
-        source: "/new-developments/:slug",
-        destination: "/conveyancing",
-        permanent: true,
-      },
-      {
-        source: "/new-developments/:slug/development-details",
-        destination: "/conveyancing",
-        permanent: true,
-      },
+      // {
+      //   source: "/new-developments",
+      //   destination: "/conveyancing",
+      //   permanent: true,
+      // },
+      // {
+      //   source: "/new-developments/:slug",
+      //   destination: "/conveyancing",
+      //   permanent: true,
+      // },
+      // {
+      //   source: "/new-developments/:slug/development-details",
+      //   destination: "/conveyancing",
+      //   permanent: true,
+      // },
     ];
   },
 };

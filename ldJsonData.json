@@ -1,0 +1,56 @@
+{
+  "@context": "http://schema.org",
+  "@graph": [
+    {
+      "@type": "Apartment",
+      "name": "Arbour Park",
+      "url": "https://resi.uatz.view.com.au/new-developments/vic-surrey-hills-3127/development-details/arbour-park/",
+      "image": "https://d126h31mg8tzcs.cloudfront.net/arbour-park/file/thumbnail/images-1200x5501.jpg",
+      "description": "Inspired by nature, designed for Surrey Hills",
+      "numberOfBedrooms": "2-3",
+      "numberOfBathroomsTotal": "2-3",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Surrey Hills",
+        "streetAddress": "352-358 Canterbury Road",
+        "postalCode": "3127",
+        "addressCountry": {
+          "@type": "Country",
+          "name": "Australia"
+        },
+        "areaServed": {
+          "@type": "AdministrativeArea",
+          "name": "Surrey Hills"
+        }
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "-37.82597",
+        "longitude": "145.09606"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "item": "https://resi.uatz.view.com.au/new-developments/",
+          "position": 1,
+          "@type": "ListItem",
+          "name": "WebPage"
+        },
+        {
+          "item": "https://resi.uatz.view.com.au/new-developments/in-vic-surrey-hills-3127/",
+          "position": 2,
+          "@type": "ListItem",
+          "name": "SearchResultsPage"
+        },
+        {
+          "item": "https://resi.uatz.view.com.au/new-developments/vic-surrey-hills-3127/development-details/arbour-park/",
+          "position": 3,
+          "@type": "ListItem",
+          "name": "DevelopmentDetailPage"
+        }
+      ]
+    }
+  ]
+}
