@@ -42,7 +42,7 @@ export  interface IAddress {
     updatedAt: string;
   }
   
-  interface File {
+  interface IFile {
     thumbnail: IThumbnail[];
     listType: IListType[];
   }
@@ -75,7 +75,7 @@ export  interface IAddress {
     createdAt: string;
     useFloorPlan: number;
     isHidden: number;
-    files: File;
+    files: IFile;
     studyroom: string;
     private_pool: string;
     enquire_only: number;
@@ -102,7 +102,8 @@ export  interface IAddress {
     displaySuite: {
       address: IAddress
     };
-    description: IDescription
+    description: IDescription;
+    image: string
   }
 
 

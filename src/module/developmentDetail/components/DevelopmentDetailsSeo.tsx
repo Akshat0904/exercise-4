@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { IAddress } from "../developmentDetail.interface";
 
 interface IProps {
@@ -10,8 +9,7 @@ const DevelopmentDetailsSeo = ({ address, title }: IProps) => {
   const COMPLETE_ADDRESS = `${address.thoroughfareNumber} ${address.thoroughfare}, ${address.area}, ${address.state} ${address.postalCode}`;
 
   return (
-    <Head>
-      {" "}
+    <>
       <title>
         {`${address.thoroughfareNumber} ${address.thoroughfare}, ${address.area} | Apartments for Sale | ${address.state} - resi.uatz.view.com.au`}
       </title>
@@ -57,7 +55,12 @@ const DevelopmentDetailsSeo = ({ address, title }: IProps) => {
         rel="canonical"
         href="https://resi.uatz.view.com.au/new-developments/vic-surrey-hills-3127/development-details/arbour-park/"
       />
-    </Head>
+      {/* <script
+        id="ldJson"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(ldJsonData) }}
+      /> */}
+    </>
   );
 };
 

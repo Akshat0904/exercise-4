@@ -13,6 +13,7 @@ import mail_open from "@/public/images/mail_open.svg";
 import telephone from "@/public/images/telephone.svg";
 import DevelopmentDetailsSeo from "@/src/module/developmentDetail/components/DevelopmentDetailsSeo";
 import BoxAccordian from "@/src/shared/component/accordian/BoxAccordian";
+import Head from "next/head";
 
 export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
@@ -67,6 +68,7 @@ const DevDetails = (props: IDevDetails) => {
     totalProperties,
     description,
     properties,
+    image,
   } = props.devDetail;
 
   const Address: string = `${address.thoroughfareNumber} ${address.thoroughfare}, ${address.area}, ${address.state} ${address.postalCode}`;
@@ -153,9 +155,79 @@ const DevDetails = (props: IDevDetails) => {
     );
   };
 
+  const loadLdJsonScript = (): JSX.Element => {
+    return (
+      <script
+        id="ldJson"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "http://schema.org",
+            "@graph": [
+              {
+                "@type": "Apartment",
+                name: { title },
+                url: "https://resi.uatz.view.com.au/new-developments/vic-surrey-hills-3127/development-details/arbour-park/",
+                image: { image },
+                description: `${description.textListing}`,
+                numberOfBedrooms: { bedrooms },
+                numberOfBathroomsTotal: { bathrooms },
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: `${address.area}`,
+                  streetAddress: `${address.thoroughfareNumber} ${address.thoroughfare}`,
+                  postalCode: `${address.postalCode}`,
+                  addressCountry: {
+                    "@type": "Country",
+                    name: `${address.country}`,
+                  },
+                  areaServed: {
+                    "@type": "AdministrativeArea",
+                    name: `${address.area}`,
+                  },
+                },
+                geo: {
+                  "@type": "GeoCoordinates",
+                  latitude: `${address.latitude}`,
+                  longitude: `${address.longitude}`,
+                },
+              },
+              {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  {
+                    item: "https://resi.uatz.view.com.au/new-developments/",
+                    position: 1,
+                    "@type": "ListItem",
+                    name: "WebPage",
+                  },
+                  {
+                    item: "https://resi.uatz.view.com.au/new-developments/in-vic-surrey-hills-3127/",
+                    position: 2,
+                    "@type": "ListItem",
+                    name: "SearchResultsPage",
+                  },
+                  {
+                    item: "https://resi.uatz.view.com.au/new-developments/vic-surrey-hills-3127/development-details/arbour-park/",
+                    position: 3,
+                    "@type": "ListItem",
+                    name: "DevelopmentDetailPage",
+                  },
+                ],
+              },
+            ],
+          }),
+        }}
+      />
+    );
+  };
+
   return (
     <Layout>
-      <DevelopmentDetailsSeo address={address} title={title} />
+      <Head>
+        <DevelopmentDetailsSeo address={address} title={title} />
+        {loadLdJsonScript()}
+      </Head>
       <main className="p-4 xl:p-0 xl:py-8 max-w-1200 mx-auto font-dmSans">
         <section className="flex flex-col lg:flex-row gap-4 mt-4 lg:mt-8 mb-8">
           {renderHeroSection()}
