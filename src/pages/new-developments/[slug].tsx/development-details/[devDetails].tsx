@@ -181,14 +181,13 @@ const DevDetails = (props: IDevDetails) => {
             bedrooms={bedrooms}
             bathrooms={bathrooms}
             carSpaces={carSpaces}
-            DisplayLocation={DisplayLocation}
+            displayLocation={DisplayLocation}
             projectTypes={projectTypes}
             totalProperties={totalProperties}
           />
         </section>
         <section className="w-full lg:w-8/12 mt-6 lg:mt-8 border-b pb-8">
           <ShowMore
-            expandHeight={1157}
             collapseHeight={200}
             expandText="Read More"
             collapseText="Read Less"

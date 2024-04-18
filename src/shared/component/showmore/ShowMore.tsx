@@ -3,7 +3,6 @@ import Image from "next/image";
 import arrow from "@/public/images/arrow.svg";
 
 interface IProps {
-  expandHeight: number;
   collapseHeight: number;
   children: ReactNode;
   blur?: boolean;
@@ -12,7 +11,6 @@ interface IProps {
 }
 
 const ShowMore: React.FC<IProps> = ({
-  expandHeight,
   collapseHeight,
   children,
   blur,
@@ -42,7 +40,7 @@ const ShowMore: React.FC<IProps> = ({
           (blur && ((Blur && blurClass) || nonBlurClass)) || nonBlurClass
         }
         style={{
-          maxHeight: showMore ? `${expandHeight}px` : `${collapseHeight}px`,
+          maxHeight: showMore ? `fit-content` : `${collapseHeight}px`,
         }}
       >
         {children}

@@ -9,7 +9,7 @@ interface IProps {
   bedrooms: string;
   bathrooms: string;
   carSpaces: string;
-  DisplayLocation: string;
+  displayLocation: string;
   projectTypes: string;
   totalProperties: number;
 }
@@ -21,7 +21,7 @@ const About = ({
   bedrooms,
   carSpaces,
   bathrooms,
-  DisplayLocation,
+  displayLocation,
   projectTypes,
   totalProperties,
 }: IProps) => {
@@ -39,7 +39,7 @@ const About = ({
               Display Location
             </span>
           </div>
-          <p className="text-base font-normal">{DisplayLocation}</p>
+          <p className="text-base font-normal">{displayLocation}</p>
         </div>
         <div className="mb-2 lg:pl-6 lg:border-r lg:border-at-light-500 lg:pr-6">
           <div className="flex gap-2 items-center mb-1">
