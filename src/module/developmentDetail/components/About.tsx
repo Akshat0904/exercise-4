@@ -2,7 +2,7 @@ import Image from "next/image";
 import RoomDetail from "@/src/shared/component/roomDetails/RoomDetail";
 import location from "@/public/images/location.svg";
 
-interface IProps {
+export interface IAboutProperties {
   title: string;
   address: string;
   priceSearch: string;
@@ -14,23 +14,23 @@ interface IProps {
   totalProperties: number;
 }
 
-const About = ({
-  title,
-  address,
-  priceSearch,
-  bedrooms,
-  carSpaces,
-  bathrooms,
-  displayLocation,
-  projectTypes,
-  totalProperties,
-}: IProps) => {
+interface IProps {
+  aboutProperties: IAboutProperties;
+}
+
+const About = ({ aboutProperties }: IProps) => {
   return (
     <div className="flex flex-col font-dmSans text-at-gray-500">
-      <p className="text-at-lg font-medium">{`About ${title}`}</p>
-      <h2 className="text-at-lg font-medium mt-4 mb-2 lg:text-xl">{address}</h2>
-      <p className="text-base font-normal text-at-gray-700 mb-2">{`From $${priceSearch}`}</p>
-      <RoomDetail bedroom={bedrooms} bathroom={bathrooms} parking={carSpaces} />
+      <p className="text-at-lg font-medium">{`About ${aboutProperties.title}`}</p>
+      <h2 className="text-at-lg font-medium mt-4 mb-2 lg:text-xl">
+        {aboutProperties.address}
+      </h2>
+      <p className="text-base font-normal text-at-gray-700 mb-2">{`From $${aboutProperties.priceSearch}`}</p>
+      <RoomDetail
+        bedroom={aboutProperties.bedrooms}
+        bathroom={aboutProperties.bathrooms}
+        parking={aboutProperties.carSpaces}
+      />
       <div className="lg:flex border-b border-at-light-500 pb-8">
         <div className="mb-2 lg:border-r lg:border-at-light-500 lg:pr-6">
           <div className="flex gap-2 items-center mb-1">
@@ -39,7 +39,9 @@ const About = ({
               Display Location
             </span>
           </div>
-          <p className="text-base font-normal">{displayLocation}</p>
+          <p className="text-base font-normal">
+            {aboutProperties.displayLocation}
+          </p>
         </div>
         <div className="mb-2 lg:pl-6 lg:border-r lg:border-at-light-500 lg:pr-6">
           <div className="flex gap-2 items-center mb-1">
@@ -48,7 +50,9 @@ const About = ({
               Property Type
             </span>
           </div>
-          <p className="text-base font-normal">{projectTypes}</p>
+          <p className="text-base font-normal">
+            {aboutProperties.projectTypes}
+          </p>
         </div>
         <div className="lg:pl-6">
           <div className="flex gap-2 items-center mb-1">
@@ -60,7 +64,9 @@ const About = ({
             />
             <span className="text-sm font-normal text-at-gray-700">size</span>
           </div>
-          <p className="text-base font-normal">{totalProperties}</p>
+          <p className="text-base font-normal">
+            {aboutProperties.totalProperties}
+          </p>
         </div>
       </div>
     </div>

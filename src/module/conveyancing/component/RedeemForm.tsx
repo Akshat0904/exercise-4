@@ -19,13 +19,9 @@ const RedeemForm = (): JSX.Element => {
     console.log("submit", data);
   };
 
-  return (
-    <div className="pb-6 rounded-xl font-dmSans text-at lg:right-0 lg:top-0 lg:absolute lg:w-38% border border-at-light-500">
-      <p className="text-sm font-bold m-6 text-at-gray-500 ">
-        Enter your details for your $220 conveyancing voucher and a free
-        contract review
-      </p>
-      <form onSubmit={handleSubmit(onSubmit)} className="px-3 lg:px-5">
+  const renderFirstNameInput = (): JSX.Element => {
+    return (
+      <>
         <Input
           type="text"
           id="firstName"
@@ -43,6 +39,13 @@ const RedeemForm = (): JSX.Element => {
             * First name is required
           </p>
         )}
+      </>
+    );
+  };
+
+  const renderLastNameInput = (): JSX.Element => {
+    return (
+      <>
         <Input
           type="text"
           id="lastName"
@@ -60,6 +63,13 @@ const RedeemForm = (): JSX.Element => {
             * Last name is required
           </p>
         )}
+      </>
+    );
+  };
+
+  const renderEmailInput = (): JSX.Element => {
+    return (
+      <>
         <Input
           type="email"
           id="emailId"
@@ -82,6 +92,14 @@ const RedeemForm = (): JSX.Element => {
               * Email Id is not valid
             </p>
           ))}
+      </>
+    );
+  };
+
+  const renderPhoneInput = (): JSX.Element => {
+    return (
+      <>
+        {" "}
         <Input
           type="number"
           id="contactNum"
@@ -105,6 +123,13 @@ const RedeemForm = (): JSX.Element => {
               * Contact number must be 10 digits
             </p>
           ))}
+      </>
+    );
+  };
+
+  const renderSelectInput = (): JSX.Element => {
+    return (
+      <>
         <Select
           id="state"
           label="state"
@@ -123,17 +148,29 @@ const RedeemForm = (): JSX.Element => {
             * Please select your state
           </p>
         )}
-        <div className="p-1 mb-4 lg:mb-6 flex flex-col">
-          <label htmlFor="message" className="font-medium text-sm">
-            Comments or message
-          </label>
-          <textarea
-            id="message"
-            {...register("message")}
-            placeholder="Add a message"
-            className="p-2 border rounded-lg border-at-light-700 focus-within:border-at-primary outline-none ring-0 focus:ring-0 focus:outline-none "
-          ></textarea>
-        </div>
+      </>
+    );
+  };
+
+  const renderTextAreaInput = (): JSX.Element => {
+    return (
+      <div className="p-1 mb-4 lg:mb-6 flex flex-col">
+        <label htmlFor="message" className="font-medium text-sm">
+          Comments or message
+        </label>
+        <textarea
+          id="message"
+          {...register("message")}
+          placeholder="Add a message"
+          className="p-2 border rounded-lg border-at-light-700 focus-within:border-at-primary outline-none ring-0 focus:ring-0 focus:outline-none "
+        ></textarea>
+      </div>
+    );
+  };
+
+  const renderSubmitButton = (): JSX.Element => {
+    return (
+      <>
         <Button buttonClass="w-full font-bold text-white bg-at-primary border-at-primary hover:border-at-primary-700 hover:bg-at-primary-700 active:bg-at-primary-700">
           <Image src={mail} alt="Mail icon" width={20} height={20} />
           <span className="text-base font-bold pl-2">Redeem Offer</span>
@@ -148,6 +185,24 @@ const RedeemForm = (): JSX.Element => {
             Privacy Policy
           </a>
         </p>
+      </>
+    );
+  };
+
+  return (
+    <div className="pb-6 rounded-xl font-dmSans text-at lg:right-0 lg:top-0 lg:absolute lg:w-38% border border-at-light-500">
+      <p className="text-sm font-bold m-6 text-at-gray-500 ">
+        Enter your details for your $220 conveyancing voucher and a free
+        contract review
+      </p>
+      <form onSubmit={handleSubmit(onSubmit)} className="px-3 lg:px-5">
+        {renderFirstNameInput()}
+        {renderLastNameInput()}
+        {renderEmailInput()}
+        {renderPhoneInput()}
+        {renderSelectInput()}
+        {renderTextAreaInput()}
+        {renderSubmitButton()}
       </form>
       {/* <DevTool control={control} /> */}
     </div>

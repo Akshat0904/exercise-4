@@ -14,6 +14,8 @@ import telephone from "@/public/images/telephone.svg";
 import DevelopmentDetailsSeo from "@/src/module/developmentDetail/components/DevelopmentDetailsSeo";
 import BoxAccordian from "@/src/shared/component/accordian/BoxAccordian";
 import Head from "next/head";
+import { IPropertyCard } from "@/src/shared/component/propertyCard/PropertyCard";
+import { IAboutProperties } from "@/src/module/developmentDetail/components/About";
 
 export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
@@ -73,40 +75,71 @@ const DevDetails = (props: IDevDetails) => {
 
   const Address: string = `${address.thoroughfareNumber} ${address.thoroughfare}, ${address.area}, ${address.state} ${address.postalCode}`;
 
-  const DisplayLocation: string = `${displaySuite.address.thoroughfareNumber} ${displaySuite.address.thoroughfare}, ${displaySuite.address.area}, ${displaySuite.address.shortenState} ${displaySuite.address.postalCode}`;
+  const DisplayLocation: string = `${displaySuite.address.thoroughfareNumber}     ${displaySuite.address.thoroughfare}, ${displaySuite.address.area}, ${displaySuite.address.shortenState} ${displaySuite.address.postalCode}`;
+
+  const requiredProperties: IPropertyCard[] = properties.map((property) => {
+    return {
+      title: property.title,
+      url: property.files.thumbnail[0].url,
+      price: property.priceDisplay,
+      description: property.discr,
+      bedRooms: property.bedrooms,
+      bathRooms: property.bathrooms,
+      carSpaces: property.carSpaces,
+    };
+  });
+
+  const aboutProperties: IAboutProperties = {
+    title,
+    address: Address,
+    priceSearch,
+    bedrooms,
+    bathrooms,
+    carSpaces,
+    displayLocation: DisplayLocation,
+    projectTypes,
+    totalProperties,
+  };
+
+  const renderButtons = (): JSX.Element => {
+    return (
+      <div className="flex gap-4">
+        <Button buttonClass="font-bold text-white bg-at-primary border-at-primary hover:border-at-primary-700 hover:bg-at-primary-700 active:bg-at-primary-700">
+          <Image src={mail_open} alt="Mail icon" width={20} height={20} />
+          <span className="ml-2">Enquire Now</span>
+        </Button>
+        <Button buttonClass="font-bold text-black bg-white border border-at-light-500 hover:border-at-gray-500  active:bg-at-light-700 disabled:opacity-50">
+          <a href="/_" className="flex items-center">
+            <Image src={telephone} alt="Mail icon" width={20} height={20} />
+            <span className="ml-2 text-black">Call us</span>
+          </a>
+        </Button>
+      </div>
+    );
+  };
+
+  const renderSocialMediaLinks = (): JSX.Element => {
+    return (
+      <div className="flex items-center mt-4 sm:mt-0">
+        {SOCIAL_MEDIA_LINKS.map((link, index) => (
+          <a
+            href={link.href}
+            key={link.title}
+            className="text-default cursor-pointer text-xl rounded-full bg-at-light-200 w-8 h-8 flex justify-center items-center ml-3"
+          >
+            <Image src={link.src!} alt={link.title} width={16} height={16} />
+          </a>
+        ))}
+      </div>
+    );
+  };
 
   const renderHeroSection = (): JSX.Element => {
     return (
       <HeroSection heading={title} subHeading={Address} divClass=" lg:w-3/5">
         <div className="flex flex-col mt-8 lg:flex-row justify-start lg:justify-between lg:items-center">
-          <div className="flex gap-4">
-            <Button buttonClass="font-bold text-white bg-at-primary border-at-primary hover:border-at-primary-700 hover:bg-at-primary-700 active:bg-at-primary-700">
-              <Image src={mail_open} alt="Mail icon" width={20} height={20} />
-              <span className="ml-2">Enquire Now</span>
-            </Button>
-            <Button buttonClass="font-bold text-black bg-white border border-at-light-500 hover:border-at-gray-500  active:bg-at-light-700 disabled:opacity-50">
-              <a href="/_" className="flex items-center">
-                <Image src={telephone} alt="Mail icon" width={20} height={20} />
-                <span className="ml-2 text-black">Call us</span>
-              </a>
-            </Button>
-          </div>
-          <div className="flex items-center mt-4 sm:mt-0">
-            {SOCIAL_MEDIA_LINKS.map((link, index) => (
-              <a
-                href={link.href}
-                key={link.title}
-                className="text-default cursor-pointer text-xl rounded-full bg-at-light-200 w-8 h-8 flex justify-center items-center ml-3"
-              >
-                <Image
-                  src={link.src!}
-                  alt={link.title}
-                  width={16}
-                  height={16}
-                />
-              </a>
-            ))}
-          </div>
+          {renderButtons()}
+          {renderSocialMediaLinks()}
         </div>
       </HeroSection>
     );
@@ -115,17 +148,8 @@ const DevDetails = (props: IDevDetails) => {
   const renderProperties = (): JSX.Element => {
     return (
       <div className="border-b border-at-light-500 pb-8 my-8 w-full">
-        {properties.map((property) => (
-          <PropertyCard
-            key={property.title}
-            url={property.files.thumbnail[0].url}
-            title={property.title}
-            price={property.priceDisplay}
-            description={property.discr}
-            bedRooms={property.bedrooms}
-            bathRooms={property.bathrooms}
-            carSpaces={property.carSpaces}
-          />
+        {requiredProperties.map((property) => (
+          <PropertyCard key={property.title} property={property} />
         ))}
       </div>
     );
@@ -155,79 +179,15 @@ const DevDetails = (props: IDevDetails) => {
     );
   };
 
-  const loadLdJsonScript = (): JSX.Element => {
-    return (
-      <script
-        id="ldJson"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "http://schema.org",
-            "@graph": [
-              {
-                "@type": "Apartment",
-                name: { title },
-                url: "https://resi.uatz.view.com.au/new-developments/vic-surrey-hills-3127/development-details/arbour-park/",
-                image: { image },
-                description: `${description.textListing}`,
-                numberOfBedrooms: { bedrooms },
-                numberOfBathroomsTotal: { bathrooms },
-                address: {
-                  "@type": "PostalAddress",
-                  addressLocality: `${address.area}`,
-                  streetAddress: `${address.thoroughfareNumber} ${address.thoroughfare}`,
-                  postalCode: `${address.postalCode}`,
-                  addressCountry: {
-                    "@type": "Country",
-                    name: `${address.country}`,
-                  },
-                  areaServed: {
-                    "@type": "AdministrativeArea",
-                    name: `${address.area}`,
-                  },
-                },
-                geo: {
-                  "@type": "GeoCoordinates",
-                  latitude: `${address.latitude}`,
-                  longitude: `${address.longitude}`,
-                },
-              },
-              {
-                "@type": "BreadcrumbList",
-                itemListElement: [
-                  {
-                    item: "https://resi.uatz.view.com.au/new-developments/",
-                    position: 1,
-                    "@type": "ListItem",
-                    name: "WebPage",
-                  },
-                  {
-                    item: "https://resi.uatz.view.com.au/new-developments/in-vic-surrey-hills-3127/",
-                    position: 2,
-                    "@type": "ListItem",
-                    name: "SearchResultsPage",
-                  },
-                  {
-                    item: "https://resi.uatz.view.com.au/new-developments/vic-surrey-hills-3127/development-details/arbour-park/",
-                    position: 3,
-                    "@type": "ListItem",
-                    name: "DevelopmentDetailPage",
-                  },
-                ],
-              },
-            ],
-          }),
-        }}
-      />
-    );
-  };
-
   return (
     <Layout>
-      <Head>
-        <DevelopmentDetailsSeo address={address} title={title} />
-        {loadLdJsonScript()}
-      </Head>
+      <DevelopmentDetailsSeo
+        address={address}
+        title={title}
+        image={image}
+        bedrooms={bedrooms}
+        bathrooms={bathrooms}
+      />
       <main className="p-4 xl:p-0 xl:py-8 max-w-1200 mx-auto font-dmSans">
         <section className="flex flex-col lg:flex-row gap-4 mt-4 lg:mt-8 mb-8">
           {renderHeroSection()}
@@ -241,17 +201,7 @@ const DevDetails = (props: IDevDetails) => {
           </div>
         </section>
         <section className="w-full lg:w-8/12 ">
-          <About
-            title={title}
-            address={Address}
-            priceSearch={priceSearch}
-            bedrooms={bedrooms}
-            bathrooms={bathrooms}
-            carSpaces={carSpaces}
-            displayLocation={DisplayLocation}
-            projectTypes={projectTypes}
-            totalProperties={totalProperties}
-          />
+          <About aboutProperties={aboutProperties} />
         </section>
         <section className="w-full lg:w-8/12 mt-6 lg:mt-8 border-b pb-8">
           <ShowMore

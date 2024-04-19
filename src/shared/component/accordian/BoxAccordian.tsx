@@ -37,12 +37,10 @@ const BoxAccordian = ({ title, children, className = "" }: IProps) => {
       </button>
       <div
         className={`grid overflow-hidden transition-all duration-500 ease-in-out pr-6  ${
-          accordionOpen
-            ? "grid-rows-[1fr] opacity-100 mt-2"
-            : "grid-rows-[0fr] opacity-0"
+          accordionOpen ? "grid-rows-[1fr]  mt-2" : "grid-rows-[0fr] "
         }`}
       >
-        <div className="overflow-hidden text-sm font-normal">{children}</div>
+        <div className="overflow-hidden ">{children}</div>
       </div>
     </div>
   );
