@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useState, useRef } from "react";
 import Image from "next/image";
 import arrow from "@/public/images/arrow.svg";
 
@@ -19,6 +19,7 @@ const ShowMore: React.FC<IProps> = ({
 }): JSX.Element => {
   const [showMore, setShowMore] = useState(false);
   const [Blur, setBlur] = useState(blur);
+  const content = useRef<HTMLDivElement>(null);
 
   const toggleShowMore = (): void => {
     setShowMore((prev) => !prev);
@@ -31,17 +32,20 @@ const ShowMore: React.FC<IProps> = ({
     "overflow-hidden transition-all duration-500 bg-clip-text ease-in-out text-transparent bg-gradient-to-b from-at-gray-500 to-white";
 
   const nonBlurClass =
-    "overflow-hidden transition-all duration-500 ease-in-out";
+    "overflow-hidden transition-all duration-1000 ease-in-out";
 
   return (
-    <div className="font-dmSans">
+    <div className="font-dmSans ">
       <div
         className={
           (blur && ((Blur && blurClass) || nonBlurClass)) || nonBlurClass
         }
         style={{
-          maxHeight: showMore ? `fit-content` : `${collapseHeight}px`,
+          maxHeight: showMore
+            ? `${content.current!.scrollHeight}px`
+            : `${collapseHeight}px`,
         }}
+        ref={content}
       >
         {children}
       </div>
