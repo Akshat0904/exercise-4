@@ -12,7 +12,7 @@ const ConveyancingPage = () => {
       <HeroSection
         heading="Buying or selling?"
         subHeading="Redeem your $220 conveyancing voucher and free contract review"
-        divClass="flex flex-col-reverse mb-8 md:block"
+        className="flex flex-col-reverse mb-8 md:block"
       >
         <a
           href="/_"
@@ -156,7 +156,7 @@ const ConveyancingPage = () => {
   return (
     <Layout>
       <main className="max-w-1200 mx-auto">
-        <section className="p-4 mx-auto xl:p-0 xl:pt-8  ">
+        <section className="p-4 mx-auto xl:p-0 xl:pt-8">
           {renderHeroSection()}
         </section>
         <section className="lg:relative lg:gap-4  mx-auto px-4 xl:px-0 ">

@@ -1,25 +1,25 @@
 import React, { ReactNode } from "react";
 
 interface IProps {
-  divClass?: string;
+  className?: string;
   heading: string;
   subHeading?: string;
-  subHeadingClass?: string;
+  subHeadingClassName?: string;
   children?: ReactNode;
 }
 
 const HeroSection: React.FC<IProps> = ({
-  divClass = "",
+  className = "",
   heading,
   subHeading,
-  subHeadingClass = "",
+  subHeadingClassName = "",
   children,
 }): JSX.Element => {
   return (
     <div
       className={
         "p-6 md:px-16 md:py-12 z-0 bg-at-primary-50 text-at-gray-500 rounded-xl w-full md:pr-72 relative " +
-        divClass
+        className
       }
     >
       <div>
@@ -30,7 +30,7 @@ const HeroSection: React.FC<IProps> = ({
           <p
             className={
               "text-sm font-normal font-dmSans text-at-gray-700 md:text-base mt-4 " +
-              subHeadingClass
+              subHeadingClassName
             }
           >
             {subHeading}

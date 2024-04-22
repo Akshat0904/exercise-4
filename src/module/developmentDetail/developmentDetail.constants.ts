@@ -19,3 +19,4 @@ export const SOCIAL_MEDIA_LINKS : ISocialMediaLinks[] = [{
     title:"Email Link"
 }
 ]
+

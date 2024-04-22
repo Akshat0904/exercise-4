@@ -53,7 +53,7 @@ export  interface IAddress {
     textTransactional: string;
   }
   
-  interface IProperties {
+ export interface IProperties {
     id: string;
     title: string;
     priceDisplay: string;

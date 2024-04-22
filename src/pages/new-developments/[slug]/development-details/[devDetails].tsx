@@ -11,9 +11,8 @@ import PropertyCard from "@/src/shared/component/propertyCard/PropertyCard";
 import LocationDetails from "@/src/module/developmentDetail/components/Location";
 import mail_open from "@/public/images/mail_open.svg";
 import telephone from "@/public/images/telephone.svg";
-import DevelopmentDetailsSeo from "@/src/module/developmentDetail/components/DevelopmentDetailsSeo";
+import DevelopmentDetailsSeo from "@/src/module/developmentDetail/components/seo/DevelopmentDetailsSeo";
 import BoxAccordian from "@/src/shared/component/accordian/BoxAccordian";
-import Head from "next/head";
 import { IPropertyCard } from "@/src/shared/component/propertyCard/PropertyCard";
 import { IAboutProperties } from "@/src/module/developmentDetail/components/About";
 
@@ -77,8 +76,8 @@ const DevDetails = (props: IDevDetails) => {
 
   const DisplayLocation: string = `${displaySuite.address.thoroughfareNumber}     ${displaySuite.address.thoroughfare}, ${displaySuite.address.area}, ${displaySuite.address.shortenState} ${displaySuite.address.postalCode}`;
 
-  const requiredProperties: IPropertyCard[] = properties.map((property) => {
-    return {
+  const renderProperties = properties.map((property): JSX.Element => {
+    let requiredProperties = {
       title: property.title,
       url: property.files.thumbnail[0].url,
       price: property.priceDisplay,
@@ -87,18 +86,24 @@ const DevDetails = (props: IDevDetails) => {
       bathRooms: property.bathrooms,
       carSpaces: property.carSpaces,
     };
+
+    return <PropertyCard key={property.title} property={requiredProperties} />;
   });
 
-  const aboutProperties: IAboutProperties = {
-    title,
-    address: Address,
-    priceSearch,
-    bedrooms,
-    bathrooms,
-    carSpaces,
-    displayLocation: DisplayLocation,
-    projectTypes,
-    totalProperties,
+  const renderAboutProperties = (): JSX.Element => {
+    let aboutProperties: IAboutProperties = {
+      title,
+      address: Address,
+      priceSearch,
+      bedrooms,
+      bathrooms,
+      carSpaces,
+      displayLocation: DisplayLocation,
+      projectTypes,
+      totalProperties,
+    };
+
+    return <About aboutProperties={aboutProperties} />;
   };
 
   const renderButtons = (): JSX.Element => {
@@ -136,22 +141,12 @@ const DevDetails = (props: IDevDetails) => {
 
   const renderHeroSection = (): JSX.Element => {
     return (
-      <HeroSection heading={title} subHeading={Address} divClass=" lg:w-3/5">
+      <HeroSection heading={title} subHeading={Address} className=" lg:w-3/5">
         <div className="flex flex-col mt-8 lg:flex-row justify-start lg:justify-between lg:items-center">
           {renderButtons()}
           {renderSocialMediaLinks()}
         </div>
       </HeroSection>
-    );
-  };
-
-  const renderProperties = (): JSX.Element => {
-    return (
-      <div className="border-b border-at-light-500 pb-8 my-8 w-full">
-        {requiredProperties.map((property) => (
-          <PropertyCard key={property.title} property={property} />
-        ))}
-      </div>
     );
   };
 
@@ -201,9 +196,9 @@ const DevDetails = (props: IDevDetails) => {
           </div>
         </section>
         <section className="w-full lg:w-8/12 ">
-          <About aboutProperties={aboutProperties} />
+          {renderAboutProperties()}
         </section>
-        <section className="w-full lg:w-8/12 mt-6 lg:mt-8 border-b pb-8">
+        <section className="w-full lg:w-8/12 mt-6 lg:mt-8 border-b pb-8 mb-8">
           <ShowMore
             collapseHeight={200}
             expandText="Read More"
@@ -213,14 +208,16 @@ const DevDetails = (props: IDevDetails) => {
             <div
               className="flex gap-7 flex-col"
               dangerouslySetInnerHTML={{ __html: description.textProfile }}
-            ></div>
+            />
           </ShowMore>
         </section>
         <section className="w-full lg:w-8/12">
           <h3 className="text-at-lg font-bold mb-4 text-at-gray-500">
             Off-The-Plan Residences For Sale At {title}
           </h3>
-          {renderProperties()}
+          <div className="border-b border-at-light-500 pb-8 my-8 w-full">
+            {renderProperties}
+          </div>
         </section>
         <section className="w-full lg:w-8/12  text-at-gray-500 ">
           <LocationDetails
