@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { IAddress } from "../../developmentDetail.interface";
+import { MetaHTMLAttributes } from "react";
 
 interface IProps {
   address: IAddress;
@@ -7,6 +8,12 @@ interface IProps {
   image: string;
   bedrooms: string;
   bathrooms: string;
+}
+
+interface IMetaData {
+  name?: string;
+  property?: string;
+  content: string;
 }
 
 const DevelopmentDetailsSeo = ({
@@ -21,6 +28,67 @@ const DevelopmentDetailsSeo = ({
   const TITLE = `${address.thoroughfareNumber} ${address.thoroughfare}, ${address.area} | Apartments for Sale | ${address.state} - resi.uatz.view.com.au`;
 
   const DESCRIPTION = `${title} is located on ${COMPLETE_ADDRESS}. Pricing and Photos available for this New Development by ${title}. Visit the site for more details!`;
+
+  const metaData: IMetaData[] = [
+    {
+      name: "description",
+      content: DESCRIPTION,
+    },
+    {
+      name: "twitter:title",
+      content: TITLE,
+    },
+    {
+      name: "twitter:description",
+      content: DESCRIPTION,
+    },
+    {
+      name: "twitter:card",
+      content: "summary_large_image",
+    },
+    {
+      name: "twitter:site",
+      content: "@ViewComAu",
+    },
+    {
+      name: "twitter:site",
+      content: "@ViewComAu",
+    },
+    {
+      name: "twitter:image",
+      content:
+        "https://d126h31mg8tzcs.cloudfront.net/arbour-park/file/thumbnail/images-1200x5501.jpg",
+    },
+    {
+      property: "og:title",
+      content: TITLE,
+    },
+    {
+      property: "og:description",
+      content: DESCRIPTION,
+    },
+    {
+      property: "og:street-address",
+      content: `${address.thoroughfareNumber} ${address.thoroughfare}, ${address.area}`,
+    },
+    {
+      property: "og:locality",
+      content: address.area,
+    },
+    {
+      property: "og:postal-code",
+      content: address.postalCode,
+    },
+    {
+      property: "og:country-name",
+      content: address.country,
+    },
+    {
+      property: "og:image",
+      content:
+        "https://d126h31mg8tzcs.cloudfront.net/arbour-park/file/thumbnail/images-1200x5501.jpg",
+    },
+  ];
 
   const renderLdJsonScript = (): JSX.Element => {
     return (
@@ -92,40 +160,21 @@ const DevelopmentDetailsSeo = ({
     );
   };
 
-  const renderGeneralMetaTags = (): JSX.Element => {
+  const renderMetaTags = (): JSX.Element => {
     return (
       <>
-        <meta name="twitter:title" content={TITLE} />
-        <meta name="description" content={DESCRIPTION} />
-        <meta name="twitter:description" content={DESCRIPTION} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@ViewComAu" />
-        <meta name="twitter:creator" content="@ViewComAu" />
-        <meta
-          name="twitter:image"
-          content="https://d126h31mg8tzcs.cloudfront.net/arbour-park/file/thumbnail/images-1200x5501.jpg"
-        />
-      </>
-    );
-  };
-
-  const renderOpenGraphMetaTags = (): JSX.Element => {
-    return (
-      <>
-        <meta property="og:title" content={TITLE} />
-        <meta property="og:description" content={DESCRIPTION} />
-        <meta
-          property="og:street-address"
-          content={`${address.thoroughfareNumber} ${address.thoroughfare}, ${address.area}`}
-        />
-        <meta property="og:locality" content={address.area} />
-        <meta property="og:postal-code" content={address.postalCode} />
-        <meta property="og:country-name" content={address.country} />
-
-        <meta
-          property="og:image"
-          content="https://d126h31mg8tzcs.cloudfront.net/arbour-park/file/thumbnail/images-1200x5501.jpg"
-        />
+        {metaData.map(
+          (meta) =>
+            (meta.name && (
+              <meta key={meta.name} name={meta.name} content={meta.content} />
+            )) || (
+              <meta
+                key={meta.property}
+                property={meta.property}
+                content={meta.content}
+              />
+            )
+        )}
       </>
     );
   };
@@ -133,8 +182,7 @@ const DevelopmentDetailsSeo = ({
   return (
     <Head>
       <title>{TITLE}</title>
-      {renderGeneralMetaTags()}
-      {renderOpenGraphMetaTags()}
+      {renderMetaTags()}
       <link
         rel="canonical"
         href="https://resi.uatz.view.com.au/new-developments/vic-surrey-hills-3127/development-details/arbour-park/"
