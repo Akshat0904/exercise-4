@@ -13,7 +13,6 @@ import mail_open from "@/public/images/mail_open.svg";
 import telephone from "@/public/images/telephone.svg";
 import DevelopmentDetailsSeo from "@/src/module/developmentDetail/components/seo/DevelopmentDetailsSeo";
 import BoxAccordian from "@/src/shared/component/accordian/BoxAccordian";
-import { IPropertyCard } from "@/src/shared/component/propertyCard/PropertyCard";
 import { IAboutProperties } from "@/src/module/developmentDetail/components/About";
 
 export const getServerSideProps: GetServerSideProps = async (
@@ -76,19 +75,23 @@ const DevDetails = (props: IDevDetails) => {
 
   const DisplayLocation: string = `${displaySuite.address.thoroughfareNumber}     ${displaySuite.address.thoroughfare}, ${displaySuite.address.area}, ${displaySuite.address.shortenState} ${displaySuite.address.postalCode}`;
 
-  const renderProperties = properties.map((property): JSX.Element => {
-    let requiredProperties = {
-      title: property.title,
-      url: property.files.thumbnail[0].url,
-      price: property.priceDisplay,
-      description: property.discr,
-      bedRooms: property.bedrooms,
-      bathRooms: property.bathrooms,
-      carSpaces: property.carSpaces,
-    };
+  const renderProperties = (): JSX.Element[] => {
+    return properties.map((property): JSX.Element => {
+      let requiredProperties = {
+        title: property.title,
+        url: property.files.thumbnail[0].url,
+        price: property.priceDisplay,
+        description: property.discr,
+        bedRooms: property.bedrooms,
+        bathRooms: property.bathrooms,
+        carSpaces: property.carSpaces,
+      };
 
-    return <PropertyCard key={property.title} property={requiredProperties} />;
-  });
+      return (
+        <PropertyCard key={property.title} property={requiredProperties} />
+      );
+    });
+  };
 
   const renderAboutProperties = (): JSX.Element => {
     let aboutProperties: IAboutProperties = {
@@ -216,7 +219,7 @@ const DevDetails = (props: IDevDetails) => {
             Off-The-Plan Residences For Sale At {title}
           </h3>
           <div className="border-b border-at-light-500 pb-8 my-8 w-full">
-            {renderProperties}
+            {renderProperties()}
           </div>
         </section>
         <section className="w-full lg:w-8/12  text-at-gray-500 ">
