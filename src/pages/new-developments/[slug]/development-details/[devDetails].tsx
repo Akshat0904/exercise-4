@@ -129,7 +129,7 @@ const DevDetails = (props: IDevDetails) => {
         {SOCIAL_MEDIA_LINKS.map((link, index) => (
           <a
             href={link.href}
-            key={link.title}
+            key={index}
             className="text-default cursor-pointer text-xl rounded-full bg-at-light-200 w-8 h-8 flex justify-center items-center ml-3"
           >
             <Image src={link.src!} alt={link.title} width={16} height={16} />
