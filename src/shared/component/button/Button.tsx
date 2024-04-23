@@ -2,14 +2,14 @@ import React, { ReactNode } from "react";
 
 interface IProps {
   type?: "button" | "reset" | "submit";
-  buttonClass?: string;
+  className?: string;
   children: ReactNode;
   onClick?: () => void;
 }
 
 const Button = ({
   type = "button",
-  buttonClass,
+  className,
   children,
   onClick,
 }: IProps): JSX.Element => {
@@ -19,7 +19,7 @@ const Button = ({
       onClick={onClick}
       className={
         "px-4 py-2  disabled:opacity-50 disabled:pointer-events-none rounded-lg flex items-center justify-center " +
-        buttonClass
+        className
       }
     >
       {children}

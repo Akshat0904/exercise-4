@@ -23,7 +23,7 @@ const LocationDetails = ({ title, address, displayLocation }: IProps) => {
           <h4 className="text-sm font-bold">Display Open Hours</h4>
           <p className="text-xs font-normal">Not available</p>
         </div>
-        <Button buttonClass="w-full font-bold text-white bg-at-primary border-at-primary hover:border-at-primary-700 hover:bg-at-primary-700 active:bg-at-primary-700">
+        <Button className="w-full font-bold text-white bg-at-primary border-at-primary hover:border-at-primary-700 hover:bg-at-primary-700 active:bg-at-primary-700">
           Request a private appointment
         </Button>
       </div>

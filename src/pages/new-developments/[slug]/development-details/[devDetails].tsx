@@ -112,11 +112,11 @@ const DevDetails = (props: IDevDetails) => {
   const renderButtons = (): JSX.Element => {
     return (
       <div className="flex gap-4">
-        <Button buttonClass="font-bold text-white bg-at-primary border-at-primary hover:border-at-primary-700 hover:bg-at-primary-700 active:bg-at-primary-700">
+        <Button className="font-bold text-white bg-at-primary border-at-primary hover:border-at-primary-700 hover:bg-at-primary-700 active:bg-at-primary-700">
           <Image src={mail_open} alt="Mail icon" width={20} height={20} />
           <span className="ml-2">Enquire Now</span>
         </Button>
-        <Button buttonClass="font-bold text-black bg-white border border-at-light-500 hover:border-at-gray-500  active:bg-at-light-700 disabled:opacity-50">
+        <Button className="font-bold text-black bg-white border border-at-light-500 hover:border-at-gray-500  active:bg-at-light-700 disabled:opacity-50">
           <a href="/_" className="flex items-center">
             <Image src={telephone} alt="Mail icon" width={20} height={20} />
             <span className="ml-2 text-black">Call us</span>

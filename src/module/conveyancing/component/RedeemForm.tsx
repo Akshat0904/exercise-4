@@ -1,7 +1,7 @@
 import Input from "@/src/shared/component/form/Input";
 import Select from "@/src/shared/component/form/Select";
 import { useForm } from "react-hook-form";
-// import { DevTool } from "@hookform/devtools";
+import { DevTool } from "@hookform/devtools";
 import { IInputValues } from "@/src/shared/component/form/Input";
 import Button from "@/src/shared/component/button/Button";
 import Image from "next/image";
@@ -16,6 +16,7 @@ const RedeemForm = (): JSX.Element => {
   } = useForm<IInputValues>();
 
   const onSubmit = (data: IInputValues) => {
+    // console.log(errors);
     console.log("submit", data);
   };
 
@@ -171,7 +172,10 @@ const RedeemForm = (): JSX.Element => {
   const renderSubmitButton = (): JSX.Element => {
     return (
       <>
-        <Button buttonClass="w-full font-bold text-white bg-at-primary border-at-primary hover:border-at-primary-700 hover:bg-at-primary-700 active:bg-at-primary-700">
+        <Button
+          type="submit"
+          className="w-full font-bold text-white bg-at-primary border-at-primary hover:border-at-primary-700 hover:bg-at-primary-700 active:bg-at-primary-700"
+        >
           <Image src={mail} alt="Mail icon" width={20} height={20} />
           <span className="text-base font-bold pl-2">Redeem Offer</span>
         </Button>
@@ -204,7 +208,7 @@ const RedeemForm = (): JSX.Element => {
         {renderTextAreaInput()}
         {renderSubmitButton()}
       </form>
-      {/* <DevTool control={control} /> */}
+      <DevTool control={control} />
     </div>
   );
 };

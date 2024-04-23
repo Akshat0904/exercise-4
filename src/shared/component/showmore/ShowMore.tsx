@@ -32,7 +32,7 @@ const ShowMore: React.FC<IProps> = ({
     "overflow-hidden transition-all duration-500 bg-clip-text ease-in-out text-transparent bg-gradient-to-b from-at-gray-500 to-white";
 
   const nonBlurClass =
-    "overflow-hidden transition-all duration-1000 ease-in-out";
+    "overflow-hidden transition-all duration-500 ease-in-out";
 
   return (
     <div className="font-dmSans ">
