@@ -22,109 +22,73 @@ const RedeemForm = (): JSX.Element => {
 
   const renderFirstNameInput = (): JSX.Element => {
     return (
-      <>
-        <Input
-          type="text"
-          id="firstName"
-          label="First name"
-          inputClass={
-            (errors.firstName &&
-              "focus-within:border-at-red-500   border-at-red-500") ||
-            ""
-          }
-          require
-          register={register}
-        />
-        {errors.firstName?.type === "required" && (
-          <p role="alert" className="text-xs -mt-4 text-at-red-500">
-            * First name is required
-          </p>
-        )}
-      </>
+      <Input
+        type="text"
+        id="firstName"
+        label="First name"
+        inputClass={
+          (errors.firstName &&
+            "focus-within:border-at-red-500   border-at-red-500") ||
+          ""
+        }
+        require
+        register={register}
+        error={errors.firstName?.message?.toString()}
+      />
     );
   };
 
   const renderLastNameInput = (): JSX.Element => {
     return (
-      <>
-        <Input
-          type="text"
-          id="lastName"
-          label="Last Name"
-          inputClass={
-            (errors.lastName &&
-              "focus-within:border-at-red-500   border-at-red-500") ||
-            ""
-          }
-          require
-          register={register}
-        />
-        {errors.lastName?.type === "required" && (
-          <p role="alert" className="text-xs -mt-4 text-at-red-500">
-            * Last name is required
-          </p>
-        )}
-      </>
+      <Input
+        type="text"
+        id="lastName"
+        label="Last Name"
+        inputClass={
+          (errors.lastName &&
+            "focus-within:border-at-red-500   border-at-red-500") ||
+          ""
+        }
+        require
+        register={register}
+        error={errors.lastName?.message?.toString()}
+      />
     );
   };
 
   const renderEmailInput = (): JSX.Element => {
     return (
-      <>
-        <Input
-          type="email"
-          id="emailId"
-          label="Email"
-          inputClass={
-            (errors.emailId &&
-              "focus-within:border-at-red-500   border-at-red-500") ||
-            ""
-          }
-          require
-          register={register}
-        />{" "}
-        {(errors.emailId?.type === "required" && (
-          <p role="alert" className="text-xs -mt-4 text-at-red-500">
-            * Email Id is required
-          </p>
-        )) ||
-          (errors.emailId?.type === "pattern" && (
-            <p role="alert" className="text-xs -mt-4 text-at-red-500">
-              * Email Id is not valid
-            </p>
-          ))}
-      </>
+      <Input
+        type="email"
+        id="emailId"
+        label="Email"
+        inputClass={
+          (errors.emailId &&
+            "focus-within:border-at-red-500   border-at-red-500") ||
+          ""
+        }
+        require
+        register={register}
+        error={errors.emailId?.message?.toString()}
+      />
     );
   };
 
   const renderPhoneInput = (): JSX.Element => {
     return (
-      <>
-        {" "}
-        <Input
-          type="number"
-          id="contactNum"
-          label="Phone"
-          inputClass={
-            (errors.contactNum &&
-              "focus-within:border-at-red-500  border-at-red-500") ||
-            ""
-          }
-          require
-          register={register}
-        />
-        {(errors.contactNum?.type === "required" && (
-          <p role="alert" className="text-xs -mt-4 text-at-red-500">
-            * Contact number is required
-          </p>
-        )) ||
-          ((errors.contactNum?.type === "minLength" ||
-            errors.contactNum?.type === "maxLength") && (
-            <p role="alert" className="text-xs -mt-4 text-at-red-500">
-              * Contact number must be 10 digits
-            </p>
-          ))}
-      </>
+      <Input
+        type="number"
+        id="contactNum"
+        label="Phone"
+        inputClass={
+          (errors.contactNum &&
+            "focus-within:border-at-red-500  border-at-red-500") ||
+          ""
+        }
+        require
+        register={register}
+        error={errors.contactNum?.message?.toString()}
+      />
     );
   };
 
@@ -143,12 +107,8 @@ const RedeemForm = (): JSX.Element => {
           register={register}
           placeholder="Select your state"
           optionValues={["VIC", "NSW", "QLD"]}
+          error={errors.state?.message?.toString()}
         />
-        {errors.state?.type === "required" && (
-          <p role="alert" className="text-xs -mt-4 text-at-red-500">
-            * Please select your state
-          </p>
-        )}
       </>
     );
   };

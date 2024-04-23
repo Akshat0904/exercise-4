@@ -56,6 +56,10 @@ export const getServerSideProps: GetServerSideProps = async (
 };
 
 const DevDetails = (props: IDevDetails) => {
+  if (props.error) {
+    return <p>{props.error!.message}</p>;
+  }
+
   const {
     title,
     address,

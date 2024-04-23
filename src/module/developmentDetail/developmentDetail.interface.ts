@@ -108,5 +108,6 @@ export  interface IAddress {
 
 
   export interface IDevDetails {
-    devDetail: IDevelopmentDetail
+    devDetail : IDevelopmentDetail;
+    error ?: {message : string}
   }

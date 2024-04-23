@@ -18,6 +18,7 @@ interface IProps {
   require?: boolean;
   inputClass?: string;
   register: UseFormRegister<IInputValues>;
+  error?: string;
 }
 
 const Input: React.FC<IProps> = ({
@@ -28,7 +29,7 @@ const Input: React.FC<IProps> = ({
   label,
   inputClass,
   register,
-  ...props
+  error,
 }): JSX.Element => {
   return (
     <div className="mb-4 font-dmSans text-at-gray-500">
@@ -46,10 +47,12 @@ const Input: React.FC<IProps> = ({
             id={id}
             placeholder={placeholder}
             {...register(id, {
-              required: true,
-              pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+              required: `* ${label} is required`,
+              pattern: {
+                value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                message: `* ${label} is not valid`,
+              },
             })}
-            {...props}
           />
         )) ||
           (id === "contactNum" && (
@@ -59,11 +62,16 @@ const Input: React.FC<IProps> = ({
               id={id}
               placeholder={placeholder}
               {...register(id, {
-                required: true,
-                minLength: 10,
-                maxLength: 10,
+                required: `* ${label} is required`,
+                minLength: {
+                  value: 10,
+                  message: `* ${label} must have 10 digits`,
+                },
+                maxLength: {
+                  value: 10,
+                  message: `* ${label} must have 10 digits`,
+                },
               })}
-              {...props}
             />
           )) || (
             <input
@@ -72,12 +80,16 @@ const Input: React.FC<IProps> = ({
               id={id}
               placeholder={placeholder}
               {...register(id, {
-                required: true,
+                required: `* ${label} is required`,
               })}
-              {...props}
             />
           )}
       </div>
+      {error && (
+        <p role="alert" className="text-xs -mb-4 text-at-red-500">
+          {error}
+        </p>
+      )}
     </div>
   );
 };
