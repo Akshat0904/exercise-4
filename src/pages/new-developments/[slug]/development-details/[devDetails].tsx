@@ -207,9 +207,9 @@ const DevDetails = (props: IDevDetails) => {
         </section>
         <section className="w-full lg:w-8/12 mt-6 lg:mt-8 border-b pb-8 mb-8">
           <ShowMore
-            collapseHeight={200}
-            expandText="Read More"
-            collapseText="Read Less"
+            initialHeight={200}
+            title="Read More"
+            description="Read Less"
             blur
           >
             <div

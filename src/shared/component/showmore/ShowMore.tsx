@@ -3,19 +3,19 @@ import Image from "next/image";
 import arrow from "@/public/images/arrow.svg";
 
 interface IProps {
-  collapseHeight: number;
+  initialHeight: number;
   children: ReactNode;
   blur?: boolean;
-  expandText: string;
-  collapseText: string;
+  title: string;
+  description: string;
 }
 
 const ShowMore: React.FC<IProps> = ({
-  collapseHeight,
+  initialHeight,
   children,
   blur,
-  expandText,
-  collapseText,
+  title,
+  description,
 }): JSX.Element => {
   const [showMore, setShowMore] = useState(false);
   const [Blur, setBlur] = useState(blur);
@@ -43,7 +43,7 @@ const ShowMore: React.FC<IProps> = ({
         style={{
           maxHeight: showMore
             ? `${content.current!.scrollHeight}px`
-            : `${collapseHeight}px`,
+            : `${initialHeight}px`,
         }}
         ref={content}
       >
@@ -53,7 +53,7 @@ const ShowMore: React.FC<IProps> = ({
         className="text-at-primary text-base leading-7 mt-2 flex gap-2 items-center"
         onClick={toggleShowMore}
       >
-        {showMore ? collapseText : expandText}
+        {showMore ? description : title}
         <span className={(showMore && "rotate-180") || ""}>
           <Image src={arrow} alt="Mail icon" width={14} height={14} />
         </span>

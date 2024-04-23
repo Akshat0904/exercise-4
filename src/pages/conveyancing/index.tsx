@@ -101,9 +101,9 @@ const ConveyancingPage = () => {
       <>
         <Review week={4} name="Jake Curtis">
           <ShowMore
-            collapseHeight={75}
-            expandText="Show More"
-            collapseText="Show Less"
+            initialHeight={75}
+            title="Show More"
+            description="Show Less"
           >
             <p>
               Marie was excellent, very prompt, clear and friendly. Would
@@ -114,9 +114,9 @@ const ConveyancingPage = () => {
         </Review>
         <Review week={2} name="Brendan Freeman">
           <ShowMore
-            collapseHeight={75}
-            expandText="Show More"
-            collapseText="Show Less"
+            initialHeight={75}
+            title="Show More"
+            description="Show Less"
           >
             <p>
               We were fortunate enough to have Carley from Settle Easy help us
@@ -133,9 +133,9 @@ const ConveyancingPage = () => {
         </Review>
         <Review week={2} name="Emma Gerts">
           <ShowMore
-            collapseHeight={75}
-            expandText="Show More"
-            collapseText="Show Less"
+            initialHeight={75}
+            title="Show More"
+            description="Show Less"
           >
             <p>
               We are first time property buyers and were buying a block of land
