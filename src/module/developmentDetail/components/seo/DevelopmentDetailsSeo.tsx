@@ -163,18 +163,9 @@ const DevelopmentDetailsSeo = ({
   const renderMetaTags = (): JSX.Element => {
     return (
       <>
-        {metaData.map(
-          (meta) =>
-            (meta.name && (
-              <meta key={meta.name} name={meta.name} content={meta.content} />
-            )) || (
-              <meta
-                key={meta.property}
-                property={meta.property}
-                content={meta.content}
-              />
-            )
-        )}
+        {metaData.map((meta, index) => (
+          <meta key={index} {...meta} />
+        ))}
       </>
     );
   };

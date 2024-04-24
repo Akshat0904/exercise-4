@@ -1,12 +1,16 @@
 import { Html, Head, Main, NextScript } from "next/document";
 
+interface IMetaData {
+  name?: string;
+  property?: string;
+  content: string;
+}
+
 const Document = (): JSX.Element => {
   const renderGeneralMetaTags = (): JSX.Element => {
     return (
       <>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="author" content="resi.uatz.view.com.au" />
         <meta name="author" content="resi.uatz.view.com.au" />
         <meta name="apple-itunes-app" content="app-id=474698182" />
         <meta name="theme-color" content="#FFFFFF" />
@@ -53,6 +57,65 @@ const Document = (): JSX.Element => {
       </>
     );
   };
+
+  // const metaData: IMetaData[] = [
+  //   {
+  //     name: "apple-mobile-web-app-capable",
+  //     content: "yes",
+  //   },
+  //   {
+  //     name: "author",
+  //     content: "resi.uatz.view.com.au",
+  //   },
+  //   {
+  //     name: "apple-itunes-app",
+  //     content: "app-id=474698182",
+  //   },
+  //   {
+  //     name: "theme-color",
+  //     content: "#FFFFFF",
+  //   },
+  //   {
+  //     name: "smartbanner:title",
+  //     content: "resi.uatz.view.com.au - Real Estate",
+  //   },
+  //   {
+  //     name: "smartbanner:author",
+  //     content: "resi.uatz.view.com.au",
+  //   },
+  //   {
+  //     name: "smartbanner:price",
+  //     content: "FREE",
+  //   },
+  //   {
+  //     name: "smartbanner:price-suffix-apple" ,
+  //     content: " - On the App Store",
+  //   },
+  //   {
+  //     name: "smartbanner:price-suffix-google",
+  //     content: " - In Google Play",
+  //   },
+  //   {
+  //     name: "smartbanner:icon-apple" ,
+  //     content: ,
+  //   },
+  //   {
+  //     name: ,
+  //     content: ,
+  //   },
+  //   {
+  //     name: ,
+  //     content: ,
+  //   },
+  //   {
+  //     property: "og:type",
+  //     content: "website",
+  //   },
+  //   {
+  //     property: "fb:admins",
+  //     content: "785845464803058",
+  //   },
+  // ];
 
   return (
     <Html lang="en">

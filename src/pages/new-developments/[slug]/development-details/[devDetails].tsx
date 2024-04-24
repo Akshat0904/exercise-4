@@ -1,19 +1,19 @@
 import Image from "next/image";
-import { GetServerSideProps, GetServerSidePropsContext } from "next";
-import Button from "@/src/shared/component/button/Button";
-import Layout from "@/src/shared/component/layout/Layout";
-import HeroSection from "@/src/shared/component/hero-section/HeroSection";
-import { IDevDetails } from "@/src/module/developmentDetail/developmentDetail.interface";
-import { SOCIAL_MEDIA_LINKS } from "@/src/module/developmentDetail/developmentDetail.constants";
-import About from "@/src/module/developmentDetail/components/About";
-import ShowMore from "@/src/shared/component/showmore/ShowMore";
-import PropertyCard from "@/src/shared/component/propertyCard/PropertyCard";
-import LocationDetails from "@/src/module/developmentDetail/components/Location";
 import mail_open from "@/public/images/mail_open.svg";
 import telephone from "@/public/images/telephone.svg";
-import DevelopmentDetailsSeo from "@/src/module/developmentDetail/components/seo/DevelopmentDetailsSeo";
+import Button from "@/src/shared/component/button/Button";
+import Layout from "@/src/shared/component/layout/Layout";
+import ShowMore from "@/src/shared/component/showmore/ShowMore";
+import About from "@/src/module/developmentDetail/components/About";
+import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import BoxAccordian from "@/src/shared/component/accordian/BoxAccordian";
+import HeroSection from "@/src/shared/component/hero-section/HeroSection";
+import PropertyCard from "@/src/shared/component/propertyCard/PropertyCard";
+import LocationDetails from "@/src/module/developmentDetail/components/Location";
 import { IAboutProperties } from "@/src/module/developmentDetail/components/About";
+import { IDevDetails } from "@/src/module/developmentDetail/developmentDetail.interface";
+import { SOCIAL_MEDIA_LINKS } from "@/src/module/developmentDetail/developmentDetail.constants";
+import DevelopmentDetailsSeo from "@/src/module/developmentDetail/components/seo/DevelopmentDetailsSeo";
 
 export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext

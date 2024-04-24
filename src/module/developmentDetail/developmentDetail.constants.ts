@@ -1,8 +1,4 @@
-interface ISocialMediaLinks {
-    href : string;
-    src ?: string;
-    title : string
-}
+import { ISocialMediaLinks } from "./developmentDetail.interface"
 
 export const SOCIAL_MEDIA_LINKS : ISocialMediaLinks[] = [{
     href:"/_",

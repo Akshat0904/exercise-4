@@ -15,7 +15,11 @@ export  interface IAddress {
     updatedAt: string;
   }
   
-  
+  export interface ISocialMediaLinks {
+    href : string;
+    src ?: string;
+    title : string
+}
   interface IThumbnail {
     id: string;
     type: string;
